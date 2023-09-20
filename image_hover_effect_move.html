@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+            
+        .effect {
+            width: 600px;
+            position: relative;  
+            margin: 0 auto;}
+        .effect .effect_wrap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            
+        }
+
+        .effect .effect_wrap div {
+            width: 48%;
+            height: 300px;
+            
+            margin-bottom: 30px;
+            position: relative;
+
+        }
+
+        .effect div img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hover_effect {
+            /* width: calc(45% - 20px);
+            height: calc(300px - 20px); */
+            position: absolute;
+            top: 10px;
+            left: 10px; 
+            border: 2px solid #000;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(function () {
+            const mouseHover = $('.effect .effect_wrap div');
+            const effect = $('.hover_effect');
+
+            const hoverWidth = mouseHover.width();
+            const hoverHidth = mouseHover.height();
+           
+            effect.css({
+                'width' : hoverWidth - 20 + 'px',
+                'height' : hoverHidth - 20 + 'px'
+            })
+            
+            mouseHover.mouseenter(function () {
+                effect.animate({
+                    'left' : $(this).position().left - -10 + 'px',
+                    'top' : $(this).position().top - -10 + 'px', 
+                })
+            })
+        })
+    </script>
+</head>
+
+<body>
+
+    <section class="effect">
+        <div class="effect_wrap"> 
+            <div>
+                <img src="img/magazine_01.jpg" alt="">
+            </div>
+            <div>
+                <img src="img/magazine_02.jpg" alt="">
+            </div>
+            <div>
+                <img src="img/magazine_03.jpg" alt="">
+            </div>
+            <div>
+                <img src="img/nature2.jpg" alt="">
+            </div>
+        </div><!-- effect_wrap -->
+        <div class="hover_effect"></div>
+    </section><!-- .effect end -->
+
+</body>
+
+</html>
